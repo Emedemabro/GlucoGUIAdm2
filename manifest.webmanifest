@@ -1,0 +1,19 @@
+{
+  "name": "GlucoGuía · Consulta farmacoterapéutica DM2",
+  "short_name": "GlucoGuía",
+  "description": "Guía educativa de consulta sobre diabetes mellitus tipo 2.",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#116466",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

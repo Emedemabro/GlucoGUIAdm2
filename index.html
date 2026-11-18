@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#116466" />
+    <meta
+      name="description"
+      content="Consulta farmacoterapéutica educativa sobre diabetes mellitus tipo 2."
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>GlucoGuía · Consulta DM2</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegación principal">
+        <a class="brand" href="#" aria-label="GlucoGuía, inicio">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 5v22M5 16h22" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+              <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </span>
+          <span><strong>GlucoGuía</strong><small>Consulta DM2</small></span>
+        </a>
+
+        <p class="nav-caption">TU ESPACIO DE CONSULTA</p>
+        <nav class="section-nav" id="section-nav">
+          <button class="nav-item is-active" data-section="medicamentos">
+            <span class="nav-icon" aria-hidden="true"><span class="capsule-icon"></span></span><span>NO INSULÍNICOS</span>
+          </button>
+          <button class="nav-item" data-section="insulinas">
+            <span class="nav-icon" aria-hidden="true">
+              <svg class="syringe-icon" viewBox="0 0 24 24" fill="none">
+                <path d="m14.5 4.5 5 5M12.5 6.5l5 5M4 20l8.5-8.5m-6.5 6.5-2-2m10-10 3-3m-7 7 6 6M3 21l3-1-2-2-1 3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span><span>INSULINAS</span>
+          </button>
+          <button class="nav-item" data-section="seguridad">
+            <span class="nav-icon" aria-hidden="true">♡</span><span>Seguridad</span>
+          </button>
+          <button class="nav-item" data-section="fundamentos">
+            <span class="nav-icon" aria-hidden="true">◉</span><span>Fundamentos de la DM2</span>
+          </button>
+          <button class="nav-item" data-section="proyecto">
+            <span class="nav-icon" aria-hidden="true">⌘</span><span>Proyecto</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="offline-card">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span><strong id="connection-label">Lista para consultar</strong><small>Contenido educativo</small></span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="mobile-brand">
+            <span class="brand-mark" aria-hidden="true">✚</span><strong>GlucoGuía</strong>
+          </div>
+          <div class="topbar-meta"><span class="live-dot"></span> Guía de consulta · DM2</div>
+          <button class="install-button" id="install-button" hidden>
+            <span aria-hidden="true">↓</span> Instalar app
+          </button>
+        </header>
+
+        <section class="welcome" aria-labelledby="welcome-title">
+          <div class="welcome-copy">
+            <p class="eyebrow"><span class="eyebrow-line"></span> INFORMACIÓN PARA ACOMPAÑAR DECISIONES</p>
+            <h1 id="welcome-title">Consulta con claridad.<br /><span>Cuida cada decisión.</span></h1>
+            <p class="welcome-description">Explora información farmacoterapéutica y conceptos clave para la diabetes tipo 2, en un solo lugar.</p>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+            <div class="art-sun"></div><div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div>
+            <div class="art-cross">+</div><span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✦</span>
+          </div>
+        </section>
+
+        <section class="search-panel" aria-label="Búsqueda">
+          <label class="search-box" for="search-input">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg>
+            <input id="search-input" type="search" placeholder="Busca un medicamento, concepto o tema..." autocomplete="off" />
+            <kbd>⌘ K</kbd>
+          </label>
+          <p class="search-hint">Busca fichas disponibles en las secciones.</p>
+        </section>
+
+        <section class="library-section" aria-labelledby="section-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker" id="section-kicker">BIBLIOTECA FARMACOTERAPÉUTICA</p>
+              <h2 id="section-title">NO INSULÍNICOS <span class="item-count" id="item-count"></span></h2>
+              <p class="section-description" id="section-description"></p>
+            </div>
+            <button class="view-toggle" id="view-toggle" aria-label="Cambiar presentación de fichas" title="Cambiar presentación"><span aria-hidden="true">▦</span></button>
+          </div>
+          <div id="results-message" class="results-message" aria-live="polite"></div>
+          <div class="card-grid" id="card-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span aria-hidden="true">⌕</span>
+            <h3 id="empty-title">Aún no hay fichas</h3>
+            <p id="empty-description">Cuando compartas la información, la organizaré en esta sección.</p>
+            <button class="text-button" id="clear-search">Limpiar búsqueda</button>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span>GlucoGuía <span class="footer-dot">·</span> Recurso educativo</span>
+        </footer>
+      </main>
+    </div>
+
+    <div class="detail-backdrop" id="detail-backdrop" hidden>
+      <section class="detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+        <button class="detail-close" id="detail-close" aria-label="Cerrar ficha">×</button>
+        <div id="detail-content"></div>
+      </section>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
