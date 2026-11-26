@@ -1,3 +1,49 @@
+FarmaDM2 6.72 — CANDIDATA DE REVISIÓN DOCUMENTAL, 26-11-2026.
+Base: copia intacta de FarmaDM2 6.71 (09-11-2026).
+Motivo: nota informativa ISP del 17-11-2026 sobre NOIANA y medicamentos basados en GLP-1.
+Se incorporó una cuarta noticia en Actualización → Chile y una advertencia en 5 fichas
+(Ozempic, Rybelsus, Victoza, Trulicity, tirzepatida), con enlace directo al documento oficial.
+Se distinguió la evidencia concentrada en semaglutida de las recomendaciones amplias del ISP.
+Se actualizó el identificador de caché, el contador de noticias y la versión visual.
+Se conservaron las 28 fichas, las alertas previas y los restantes módulos.
+NO publicada en GitHub. NO validada clínicamente. Pruebas reales y pendientes:
+consultar documentacion/Registro_transferencia_ISP_NOIANA_6.72.md.
+
+--- HISTORIAL ANTERIOR CONSERVADO ---
+FarmaDM2 6.71 — revisión de seguridad con enfoque de mesón, 09-11-2026.
+Base: FarmaDM2 6.7 (42 archivos), sin cambio de arquitectura o funciones.
+10 fichas: señales de alarma abdominal y orientación a urgencias expresadas en lenguaje condicional.
+Saxagliptina: Res. Ex. ISP 4740 explicitada en profundización; SAVOR-TIMI 53 pancreatitis contextualizada.
+Tirzepatida: retiro de imperativos de suspensión desde mesón; decisión clínica en profundización.
+Rybelsus: corregida mención secundaria inapropiada a dispositivo inyectable.
+Degludec no modificado. No se añadieron contraindicaciones de CMT/NEM2 ni equivalencias entre folletos.
+Caché renovado para permitir actualización de versión offline.
+Consultar documentacion/Cambios_y_pruebas_FarmaDM2_6.71.md y CONTINUIDAD_FarmaDM2_6.71.md.
+Cotejo clínico integral y pruebas en dispositivo/publicación real pendientes.
+
+FarmaDM2 6.7 — integración educativa, 08-11-2026.
+Consultar documentacion/Informe_FarmaDM2_6.7.md para cambios, pruebas y pendientes.
+Base 6.6.1 preservada; 28 fichas intactas. Servir mediante HTTPS o localhost.
+Validación clínica profesional pendiente.
+
+FarmaDM2 6.6 — PROTOTIPO ACADÉMICO (entrega técnica, 07-11-2026)
+Base: FarmaDM2 6.5. El catálogo principal contiene 28 fichas: 17 medicamentos no insulínicos para DM2 y 11 insulinas.
+Wegovy y Saxenda se consultan como presentaciones relacionadas de semaglutida y liraglutida en sus fichas principales. Siguen apareciendo al buscarlos por nombre, pero no cuentan como fichas terapéuticas de DM2.
+El contenido íntegro de ambas fichas de la versión 6.5 se conserva en documentacion/respaldo_integral_wegovy_saxenda_hasta_6.5.json. Es un archivo documental histórico, no una fuente vigente ni material mostrado por la interfaz.
+Se añadió referencia ISP (modificación 2025) a Rybelsus 7 mg sin modificar su pauta de administración. Saxagliptina: se documentó para el QF la discrepancia de contraindicación exigida por Res. Ex. ISP 4740; el ajuste clínico sigue pendiente de cotejo con folleto actualizado específico y revisión profesional, y NO se usa como prohibición automática de dispensación.
+La plataforma no diagnostica, prescribe ni ajusta tratamientos. El estado de distribución de marcas y el producto comercial concreto deben confirmarse en fuentes oficiales. Evaluación clínica profesional pendiente.
+Mantener como respaldo FarmaDM2 6.5 mientras el autor realiza pruebas web, móvil y offline de 6.6.
+Historial anterior preservado:
+
+FarmaDM2 6.5 — PROTOTIPO ACADÉMICO (entrega técnica, 07-11-2026)
+Propósito: herramienta educativa de consulta farmacoterapéutica para apoyar la dispensación en farmacia. No diagnostica, prescribe ni ajusta dosis; validación clínica profesional pendiente.
+Base: FarmaDM2 6.4, revisada por el autor con pruebas de funcionamiento satisfactorias (alcance específico informado por el autor).
+Novedades 6.5: se retiraron seis tarjetas de posología de la vista rápida (datos históricos conservados en nivel QF), se armonizó saxagliptina sin siglas del ensayo en vista clínica, se unificaron las tarjetas de dosis olvidada de Wegovy y se añadieron fuentes ISP verificables.
+Registros: «Registro_FarmaDM2_6.5_2026-11-07.md» entregado por separado. Mantener referencias y advertencias de vigencia por presentación; 95 filas preliminares de marcas_isp.json siguen «Por confirmar».
+Pruebas pendientes: publicación real, actualización de caché en dispositivos de usuario y funcionamiento offline; revisión clínica profesional de las fichas.
+El historial de cambios anterior se conserva a continuación.
+
+------ HISTORIAL TÉCNICO PREVIO ------
 FarmaDM2 v2.0 — versión de auditoría documental preliminar.
 Mantiene navegación v1.9.5; agrega referencias regulatorias chilenas en metformina y matriz auditable auditoria_metformina_v20.csv. No incorpora catálogo comercial ni datos de stock. No hay validación clínica ni verificación actual de registros ISP. Servir mediante Live Server o servidor HTTP local.
 
