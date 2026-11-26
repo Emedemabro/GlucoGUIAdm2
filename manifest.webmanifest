@@ -1,7 +1,7 @@
 {
-  "name": "GlucoGuía · Consulta farmacoterapéutica DM2",
-  "short_name": "GlucoGuía",
-  "description": "Guía educativa de consulta sobre diabetes mellitus tipo 2.",
+  "name": "FarmaDM2 · Apoyo a la dispensación y educación en DM2",
+  "short_name": "FarmaDM2",
+  "description": "Prototipo académico de apoyo a la dispensación y educación en diabetes mellitus tipo 2.",
   "lang": "es",
   "start_url": "./",
   "scope": "./",

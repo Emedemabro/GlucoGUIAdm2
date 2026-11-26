@@ -1,0 +1,86 @@
+[
+  {
+    "id": "metformina",
+    "nombre": "Metformina",
+    "familia": "Biguanida",
+    "via": "Oral",
+    "estado": "Pendiente de validación",
+    "descripcion": "Disminuye principalmente la producción hepática de glucosa.",
+    "seguridad": [
+      "Revisar función renal y situaciones de deshidratación.",
+      "Consultar por intolerancia gastrointestinal persistente.",
+      "Considerar déficit de vitamina B12 en tratamientos prolongados."
+    ],
+    "dispensacion": "Verificar tolerancia, antecedentes clínicos relevantes y posibles motivos de consulta al químico farmacéutico."
+  },
+  {
+    "id": "empagliflozina",
+    "nombre": "Empagliflozina",
+    "familia": "Inhibidor SGLT2",
+    "via": "Oral",
+    "estado": "Pendiente de validación",
+    "descripcion": "Inhibe la reabsorción renal de glucosa mediada por SGLT2.",
+    "seguridad": [
+      "Evaluar antecedentes de depleción de volumen y síntomas de infecciones genitales.",
+      "Reconocer síntomas compatibles con cetoacidosis, incluso sin hiperglicemia marcada.",
+      "Los criterios de uso renal dependen de la indicación y de la información vigente."
+    ],
+    "dispensacion": "No recomendar aumento indiscriminado de líquidos ni asumir un umbral renal universal."
+  },
+  {
+    "id": "semaglutida",
+    "nombre": "Semaglutida",
+    "familia": "Agonista receptor GLP-1",
+    "via": "Oral o subcutánea, según presentación",
+    "estado": "Pendiente de validación",
+    "descripcion": "Agonismo del receptor GLP-1 con efectos dependientes de glucosa y sobre el apetito.",
+    "seguridad": [
+      "La administración y titulación varían según la presentación.",
+      "Vigilar tolerancia gastrointestinal y síntomas persistentes de alarma.",
+      "La asociación con insulina o sulfonilureas puede aumentar el riesgo de hipoglicemia."
+    ],
+    "dispensacion": "Confirmar formulación y presentación antes de orientar la administración."
+  },
+  {
+    "id": "insulina-nph",
+    "nombre": "Insulina NPH",
+    "familia": "Insulina de acción intermedia",
+    "via": "Subcutánea",
+    "estado": "Pendiente de validación",
+    "descripcion": "Preparación de insulina humana de acción intermedia.",
+    "seguridad": [
+      "La hipoglicemia es una reacción adversa relevante.",
+      "La suspensión requiere resuspensión correcta según el producto.",
+      "La conservación debe verificarse en el folleto específico."
+    ],
+    "dispensacion": "Verificar nombre, concentración, dispositivo, técnica y conservación."
+  },
+  {
+    "id": "tirzepatida",
+    "nombre": "Tirzepatida",
+    "familia": "Agonista dual GIP/GLP-1",
+    "via": "Subcutánea",
+    "estado": "Pendiente de validación",
+    "descripcion": "Agonismo de receptores GIP y GLP-1.",
+    "seguridad": [
+      "Considerar efectos gastrointestinales y posible deshidratación.",
+      "El vaciamiento gástrico puede modificar la absorción de determinados medicamentos orales.",
+      "Revisar el producto y la pauta de titulación prescrita."
+    ],
+    "dispensacion": "Verificar presentación, esquema prescrito e interacciones relevantes."
+  },
+  {
+    "id": "sitagliptina",
+    "nombre": "Sitagliptina",
+    "familia": "Inhibidor DPP-4",
+    "via": "Oral",
+    "estado": "Pendiente de validación",
+    "descripcion": "Inhibe DPP-4 y prolonga la actividad de incretinas endógenas.",
+    "seguridad": [
+      "La función renal puede condicionar ajustes de dosis.",
+      "El riesgo de hipoglicemia aumenta con ciertos tratamientos concomitantes.",
+      "Revisar alertas específicas de la molécula."
+    ],
+    "dispensacion": "Verificar función renal documentada y farmacoterapia concomitante cuando corresponda."
+  }
+]

@@ -1,27 +1,29 @@
-const CACHE_NAME = "glucoguia-v5";
-const APP_SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./icon.svg"];
+const CACHE = "farmadm2-v02";
+const APP_SHELL = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./medicamentos.json",
+  "./manifest.webmanifest",
+  "./icon.svg"
+];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
-  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-      if (new URL(event.request.url).origin === self.location.origin && response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-      }
-      return response;
-    }))
-  );
+  if (event.request.method !== "GET" || new URL(event.request.url).origin !== self.location.origin) return;
+  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
 });
