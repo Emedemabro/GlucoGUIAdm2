@@ -1,8 +1,7 @@
 {
-  "name": "FarmaDM2 · Apoyo a la dispensación y educación en DM2",
+  "name": "FarmaDM2 - Consulta farmacoterapéutica",
   "short_name": "FarmaDM2",
-  "description": "Prototipo académico de apoyo a la dispensación y educación en diabetes mellitus tipo 2.",
-  "lang": "es",
+  "description": "Prototipo académico para consulta farmacoterapéutica DM2",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

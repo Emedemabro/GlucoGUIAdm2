@@ -1,157 +1,58 @@
-let medications = [];
-let selectedFamily = "Todas";
+let brands=[],meds=[],view='inicio',filter='Todas',query='';const $=s=>document.querySelector(s);const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));const brandResults=()=>{let a=query?brands.filter(b=>(b.nombre+' '+b.registro).toLocaleLowerCase('es').includes(query)):[];return a.length?`<div class="section-head"><h2>Marcas y presentaciones ISP</h2><span class="count">${a.length} resultados</span></div><p class="muted mini">Catálogo preliminar. Vigencia y disponibilidad no verificadas.</p><div class="brand-list">${a.slice(0,30).map(b=>`<button class="brand-hit" data-brand="${esc(b.registro)}"><b>${esc(b.nombre)}</b><small>${esc(b.registro)} · ${esc(b.empresa)}</small></button>`).join('')}</div>`:''};const cards=a=>a.length?`<div class="grid">${a.map(m=>`<button class="card" data-med="${esc(m.id)}"><span class="chip">${esc(m.familia)}</span><h3>${esc(m.nombre)}</h3><span class="muted mini">${esc(m.via)}</span><p>${esc(m.descripcion)}</p><span class="link">Ver ficha →</span></button>`).join('')}</div>`:'<p class="muted">No se encontraron medicamentos.</p>';function filtered(){return meds.filter(m=>(filter==='Todas'||m.familia===filter)&&[m.nombre,m.familia,m.descripcion,...(m.marcas||[]).map(b=>b.nombre),...(m.id==='metformina'?brands.map(b=>b.nombre):[])].join(' ').toLocaleLowerCase('es').includes(query))}function setView(v){view=v;document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));render();window.scrollTo({top:230,behavior:'smooth'})}function render(){let out='';if(view==='inicio'){out=`<div class="section-head"><h2>Accesos rápidos</h2></div><div class="features"><button class="feature" data-go="catalogo"><span class="emoji">💊</span><b>Medicamentos</b><small>Consultar fichas</small></button><button class="feature" data-go="alertas"><span class="emoji">🛡️</span><b>Seguridad</b><small>Precauciones clave</small></button><button class="feature" data-go="insulinas"><span class="emoji">💉</span><b>Insulinas</b><small>Administración y conservación</small></button><button class="feature" data-go="educacion"><span class="emoji">📚</span><b>Actualización</b><small>Cápsula de metformina</small></button></div><div class="section-head"><h2>Explorar fichas</h2><span class="count">${meds.length} fichas de demostración</span></div>${brandResults()}${cards(filtered())}`}else if(view==='catalogo'){let fs=['Todas',...new Set(meds.map(m=>m.familia))];out=`<div class="section-head"><h2>Medicamentos</h2><span class="count">${filtered().length} resultados</span></div><div class="filters">${fs.map(f=>`<button class="filter ${f===filter?'selected':''}" data-filter="${esc(f)}">${esc(f)}</button>`).join('')}</div>${brandResults()}${cards(filtered())}`}else if(view==='alertas'){out=`<h2>Seguridad · Sospecha de hipoglicemia</h2><p class="muted">Protocolo educativo preliminar para el personal. Requiere revisión profesional antes de uso asistencial.</p><div class="detail"><section class="clinical-block"><h3>1. Identificar y evaluar</h3><p>Temblor, sudoración, hambre, palpitaciones, mareo o confusión pueden sugerir hipoglicemia. Si es posible, medir glucemia. Un valor inferior a 70 mg/dL requiere actuación.</p></section><section class="clinical-block"><h3>2. Persona consciente y capaz de tragar</h3><p>Si la glucemia es baja, seguir el plan individual indicado. Como referencia educativa general, la regla 15-15 consiste en administrar 15 g de carbohidratos de absorción rápida, esperar 15 minutos y volver a medir; repetir si sigue bajo 70 mg/dL. Solicitar apoyo del químico farmacéutico y no retrasar la atención médica si no mejora.</p></section><section class="clinical-block"><h3>3. Emergencia</h3><p>Si presenta pérdida de conciencia, convulsiones, incapacidad para tragar o alteración importante del estado mental: activar servicios de urgencia. No dar alimentos ni líquidos por boca. Seguir protocolos locales y actuar dentro de las competencias del personal.</p></section><section class="clinical-block"><h3>4. Seguimiento</h3><p>Los episodios recurrentes deben evaluarse por el equipo tratante; el médico prescriptor determinará si se requiere modificar el tratamiento. El químico farmacéutico puede revisar medicamentos, factores de riesgo y coordinar la derivación.</p></section><section class="clinical-block"><h3>Fuente y validación</h3><p><a href="https://www.cdc.gov/diabetes/treatment/treatment-low-blood-sugar-hypoglycemia.html" target="_blank" rel="noopener noreferrer">CDC · Tratamiento de la hipoglicemia (2024) ↗</a></p><p class="muted mini">Revisión documental: 08-10-2026. Revisión profesional y adaptación al contexto chileno pendientes.</p></section></div>`}else if(view==='educacion'){out=`<div class="section-head"><h2>Actualización farmacoterapéutica</h2><span class="count">Metformina · 2 cápsulas piloto</span></div><p class="muted">Aprendizaje asincrónico en lenguaje sencillo, orientado a auxiliares, técnicos y personal de farmacia. Cada cápsula puede revisarse de forma independiente.</p><div class="detail"><div class="learning-intro"><span class="chip">Cápsula 01 · Conocer el medicamento</span><h3>Metformina: cómo actúa y qué debemos saber</h3><p class="muted mini">Lectura estimada: 2–3 minutos · conceptos fundamentales</p></div><section class="clinical-block"><h3>¿Cómo ayuda a controlar la glucosa?</h3><p>La metformina disminuye principalmente la cantidad de glucosa que produce el hígado. No estimula directamente al páncreas para liberar más insulina. Por eso, cuando se usa sola, tiene un riesgo bajo de provocar hipoglicemia.</p><p class="muted mini"><strong>Si quieres profundizar:</strong> este efecto se conoce como reducción de la producción hepática de glucosa.</p></section><section class="clinical-block"><h3>¿Qué significa XR?</h3><p>XR identifica una formulación de liberación prolongada: el medicamento se libera de manera distinta a una formulación convencional. No debemos suponer que ambas presentaciones se administran con el mismo horario.</p><p><strong>Ejemplo:</strong> el folleto profesional de Glafornil XR describe una administración usual una vez al día con la cena, pero siempre debe verificarse la indicación prescrita y el producto dispensado.</p></section><section class="clinical-block"><h3>¿Por qué se puede combinar con otros tratamientos?</h3><p>En la DM2, la elección del tratamiento depende de las necesidades de cada persona. El equipo tratante puede utilizar metformina sola o junto con otros medicamentos que actúan de manera diferente. La elección individual corresponde al prescriptor.</p><p class="muted mini">La explicación de indicaciones específicas de iSGLT2 y agonistas GLP-1 se incorporará tras revisar guías clínicas vigentes.</p></section><section class="clinical-block"><h3>¿Qué efectos conviene conocer?</h3><p>Al inicio pueden presentarse náuseas, diarrea, dolor abdominal, vómitos o pérdida del apetito. Si son intensos o persistentes, requieren orientación profesional. La metformina sola rara vez provoca hipoglicemia; al combinarse con insulina o sulfonilureas, el riesgo puede aumentar.</p></section><section class="clinical-block"><h3>Comprueba lo aprendido</h3><div class="learning-question"><h4>1. ¿Cuál es una acción principal de metformina?</h4><div class="learning-answers"><button type="button" data-quiz="q1" data-choice="a">A. Obliga al páncreas a liberar insulina.</button><button type="button" data-quiz="q1" data-choice="b">B. Reduce la producción de glucosa en el hígado.</button><button type="button" data-quiz="q1" data-choice="c">C. Elimina por completo los carbohidratos ingeridos.</button></div><div id="feedback-q1" class="learning-feedback" role="status" aria-live="polite">Selecciona una alternativa.</div></div><div class="learning-question"><h4>2. ¿Qué debemos recordar sobre una formulación XR?</h4><div class="learning-answers"><button type="button" data-quiz="q2" data-choice="a">A. Su pauta debe verificarse; no se asume igual a la convencional.</button><button type="button" data-quiz="q2" data-choice="b">B. Siempre tiene el mismo horario que la convencional.</button><button type="button" data-quiz="q2" data-choice="c">C. Puede cambiarse libremente sin revisar la receta.</button></div><div id="feedback-q2" class="learning-feedback" role="status" aria-live="polite">Selecciona una alternativa.</div></div></section><div class="learning-intro learning-second"><span class="chip">Cápsula 02 · Realidad del mesón</span><h3>Metformina: orientar, prevenir errores y reconocer alertas</h3><p class="muted mini">Lectura estimada: 2–3 minutos · situaciones prácticas</p></div><section class="clinical-block"><h3>¿Cómo explicarlo sin tecnicismos?</h3><p><strong>Pregunta habitual:</strong> «¿Por qué me produce molestias al estómago?»</p><p><strong>Respuesta orientativa:</strong> «Al comenzar a usar metformina pueden aparecer molestias digestivas. Si son fuertes, no desaparecen o no puede mantenerse hidratado, consulte al químico farmacéutico o al médico».</p><p class="muted mini">La orientación debe respetar el folleto del producto y la indicación individual. No modificar la dosis por iniciativa propia.</p></section><section class="clinical-block"><h3>¿Qué señales requieren mayor atención?</h3><p>Los vómitos o la diarrea persistentes pueden causar deshidratación. Esto es relevante en personas que utilizan metformina, especialmente si tienen problemas renales. Se debe solicitar evaluación profesional; ante síntomas graves o compromiso del estado general, corresponde atención médica urgente.</p><p><strong>Pregunta útil:</strong> «¿Ha podido beber líquidos normalmente o ha tenido vómitos o diarrea intensos?»</p></section><section class="clinical-block"><h3>¿Qué errores debemos prevenir?</h3><p>Confirmar nombre, concentración, formulación y pauta. Una receta que dice Glafornil XR no debe interpretarse automáticamente como equivalente a Glafornil convencional. Si hay diferencias o dudas, solicitar revisión del químico farmacéutico y aclaración con el prescriptor.</p></section><section class="clinical-block"><h3>¿Qué ocurre con los antiinflamatorios?</h3><p>Algunos AINEs, como ibuprofeno o naproxeno, pueden afectar la función renal en personas susceptibles. Si la persona presenta deshidratación, vómitos o diarrea, conviene consultar al químico farmacéutico o médico antes de automedicarse. No se trata de una prohibición universal.</p></section><section class="clinical-block"><h3>Comprueba lo aprendido</h3><div class="learning-question"><h4>3. Una persona con metformina tiene diarrea intensa y solicita ibuprofeno. ¿Qué harías?</h4><div class="learning-answers"><button type="button" data-quiz="q3" data-choice="a">A. Recomendarlo sin hacer preguntas.</button><button type="button" data-quiz="q3" data-choice="b">B. Indicar que suspenda definitivamente la metformina.</button><button type="button" data-quiz="q3" data-choice="c">C. Solicitar evaluación profesional por deshidratación y riesgo renal.</button></div><div id="feedback-q3" class="learning-feedback" role="status" aria-live="polite">Selecciona una alternativa.</div></div><div class="learning-question"><h4>4. Una receta indica Glafornil XR, pero la persona usaba una formulación convencional. ¿Qué corresponde?</h4><div class="learning-answers"><button type="button" data-quiz="q4" data-choice="a">A. Mantener el horario anterior sin revisar.</button><button type="button" data-quiz="q4" data-choice="b">B. Verificar formulación, concentración y pauta; aclarar discrepancias.</button><button type="button" data-quiz="q4" data-choice="c">C. Duplicar la dosis para compensar el cambio.</button></div><div id="feedback-q4" class="learning-feedback" role="status" aria-live="polite">Selecciona una alternativa.</div></div></section><section class="clinical-block"><h3>Respaldo documental y límites</h3><p>Folleto profesional Glafornil XR, REF MT1903412/22, aportado al proyecto: administración (pág. 1), precauciones renales y AINEs (pág. 4), efectos adversos (pág. 6). <a href="https://www.nhs.uk/medicines/metformin/" target="_blank" rel="noopener noreferrer">Información general sobre metformina · NHS ↗</a>.</p><p class="muted mini">Material preliminar, pendiente de revisión profesional. La correspondencia entre el registro del folleto XR 1000 y el catálogo ISP aún requiere verificación. Las respuestas de autoevaluación no se guardan. No constituye un protocolo asistencial validado.</p></section></div>`}else if(view==='insulinas'){out=`<h2>Insulinas y conservación</h2><p class="muted">Módulo planificado con información diferenciada por producto, concentración y dispositivo.</p><div class="placeholder"><b>Próxima etapa</b><p>Incorporaremos Actrapid, Insulatard, insulina asparta, Toujeo y Tresiba, con condiciones de almacenamiento antes y durante el uso obtenidas de sus respectivos folletos ISP. No se muestran instrucciones de conservación sin verificar.</p></div>`}else if(view==='acerca'){out=`<h2>Sobre FarmaDM2</h2><div class="detail"><p>Prototipo académico para consolidar información farmacoterapéutica de diabetes mellitus tipo 2 y apoyar la consulta durante la dispensación.</p><h3>Estado de contenidos</h3><p>Una ficha ampliada y cinco demostrativas, pendientes de revisión bibliográfica y regulatoria. No apto para decisiones clínicas.</p><h3>Privacidad</h3><p>Esta versión no solicita ni almacena datos personales de pacientes.</p><h3>Actualización</h3><p>La próxima versión incorporará fuentes documentales, fecha de revisión y control de versiones por ficha.</p></div>`}$('#view').innerHTML=out;document.querySelectorAll('[data-quiz]').forEach(btn=>btn.addEventListener('click',()=>{const q=btn.dataset.quiz,c=btn.dataset.choice;const correct={q1:'b',q2:'a',q3:'c',q4:'b'};const explanation={q1:'La metformina reduce principalmente la producción de glucosa en el hígado; no estimula directamente la liberación de insulina.',q2:'La formulación XR requiere verificar concentración y pauta. No se debe asumir equivalencia con la formulación convencional.',q3:'La diarrea intensa puede producir deshidratación. Los AINEs pueden afectar la función renal en personas susceptibles; corresponde evaluación profesional.',q4:'No se debe asumir equivalencia entre formulaciones. Es necesario verificar la receta y aclarar las diferencias con el profesional correspondiente.'};const fb=$('#feedback-'+q);if(fb)fb.textContent=(c===correct[q]?'Correcto. ':'Revisa la respuesta. ')+explanation[q];document.querySelectorAll('[data-quiz="'+q+'"]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));}));document.querySelectorAll('[data-brand]').forEach(b=>b.addEventListener('click',()=>detail('metformina','rapida','primera',b.dataset.brand)));document.querySelectorAll('[data-med]').forEach(b=>b.addEventListener('click',()=>detail(b.dataset.med)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.go)));document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;render()}))}let activeMed=null, detailTab='rapida', dispenseMode='primera';
+function detail(id, tab='rapida', mode='primera', selectedBrand=''){
+ const m=meds.find(x=>x.id===id);if(!m)return;
+ activeMed=id;detailTab=tab;dispenseMode=mode;
+ const list=a=>`<ul>${(a||[]).map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`;
+ const block=(title,body)=>`<section class="clinical-block"><h3>${esc(title)}</h3>${body}</section>`;
+ const expanded=Boolean(m.mecanismo);
+ const selected=brands.find(x=>x.registro===selectedBrand);
+ const isGlafornilXR=Boolean(selected&&/^GLAFORNIL XR\b/i.test(selected.nombre));
+ let body=`<button class="back" id="back">← Volver al catálogo</button><article class="detail" style="margin-top:14px"><span class="chip">${esc(m.familia)}</span><h2>${esc(m.nombre)}</h2><p class="muted">${esc(m.via)} · ${esc(m.estado)}</p>`;
+ if(selectedBrand){const b=brands.find(x=>x.registro===selectedBrand);if(b)body+=`<div class="selected-brand"><b>Presentación encontrada:</b> ${esc(b.nombre)}<p class="muted mini">Registro ISP: ${esc(b.registro)} · Titular: ${esc(b.empresa)}.</p><p class="muted mini"><b>Formulación:</b> ${esc(b.formulacion_indicio)}.</p><p class="muted mini"><b>Estado:</b> ${esc(b.estado_verificacion)}. Fuente: ${esc(b.fuente)}. Fecha de consulta: no documentada.</p><p class="muted mini">${isGlafornilXR?'Folleto profesional de la familia Glafornil XR aportado; la vigencia del registro y las condiciones específicas de cada presentación requieren comprobación.':'La ficha describe el principio activo; no se ha verificado el folleto específico de esta marca.'}</p></div>`;}
+ body+=`<div class="detail-tabs" role="tablist" aria-label="Tipo de consulta"><button type="button" role="tab" aria-selected="${tab==='rapida'}" class="${tab==='rapida'?'chosen':''}" data-detailtab="rapida">Dispensación rápida</button><button type="button" role="tab" aria-selected="${tab==='clinica'}" class="${tab==='clinica'?'chosen':''}" data-detailtab="clinica">Información clínica</button></div>`;
+ if(tab==='rapida'){
 
-const $ = (selector) => document.querySelector(selector);
-const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (character) => ({
-  "&": "&amp;",
-  "<": "&lt;",
-  ">": "&gt;",
-  '"': "&quot;",
-  "'": "&#39;"
-}[character]));
-
-function renderMedications() {
-  const query = $("#search").value.trim().toLocaleLowerCase("es");
-  const matches = medications.filter((medication) => {
-    const matchesFamily = selectedFamily === "Todas" || medication.familia === selectedFamily;
-    const searchable = [medication.nombre, medication.familia, medication.descripcion]
-      .join(" ")
-      .toLocaleLowerCase("es");
-    return matchesFamily && searchable.includes(query);
-  });
-
-  $("#count").textContent = `${matches.length} ${matches.length === 1 ? "ficha" : "fichas"}`;
-  $("#list").innerHTML = matches.length
-    ? matches.map((medication) => `
-      <button class="card clickable" type="button" data-id="${escapeHTML(medication.id)}" aria-label="Abrir ficha de ${escapeHTML(medication.nombre)}">
-        <span class="card-top">
-          <span class="tag">${escapeHTML(medication.familia)}</span>
-          <span class="card-state">${escapeHTML(medication.estado)}</span>
-        </span>
-        <span class="card-title">${escapeHTML(medication.nombre)}</span>
-        <span class="meta">${escapeHTML(medication.via)}</span>
-        <span class="card-description">${escapeHTML(medication.descripcion)}</span>
-        <span class="more">Consultar ficha <span aria-hidden="true">→</span></span>
-      </button>
-    `).join("")
-    : '<p class="empty-message">No hay resultados con esos filtros.</p>';
-}
-
-function renderFilters() {
-  const families = ["Todas", ...new Set(medications.map((medication) => medication.familia))];
-  $("#filters").innerHTML = families.map((family) => `
-    <button class="${family === selectedFamily ? "selected" : ""}" type="button" data-filter="${escapeHTML(family)}" aria-pressed="${family === selectedFamily}">
-      ${escapeHTML(family)}
-    </button>
-  `).join("");
-}
-
-function showMedication(id) {
-  const medication = medications.find((item) => item.id === id);
-  if (!medication) return;
-
-  $("#detailbody").innerHTML = `
-    <h2 id="detail-title">${escapeHTML(medication.nombre)}</h2>
-    <p class="detailmeta">${escapeHTML(medication.familia)} · ${escapeHTML(medication.via)}</p>
-    <p class="detail-status">${escapeHTML(medication.estado)}</p>
-    <section class="detailsection">
-      <h4>Mecanismo resumido</h4>
-      <p>${escapeHTML(medication.descripcion)}</p>
-    </section>
-    <section class="detailsection">
-      <h4>Aspectos de seguridad por validar</h4>
-      <ul>${medication.seguridad.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul>
-    </section>
-    <section class="detailsection">
-      <h4>Enfoque de dispensación</h4>
-      <p>${escapeHTML(medication.dispensacion)}</p>
-    </section>
-    <p class="notice">Contenido preliminar, sin validación farmacoterapéutica final. No utilizar para decisiones clínicas.</p>
-  `;
-  $("#detail").showModal();
-  $("#close").focus();
-}
-
-function activateTab(tab) {
-  document.querySelectorAll("[data-tab]").forEach((button) => {
-    const active = button === tab;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-selected", String(active));
-    button.tabIndex = active ? 0 : -1;
-  });
-
-  document.querySelectorAll(".panel").forEach((panel) => {
-    const active = panel.id === tab.dataset.tab;
-    panel.hidden = !active;
-    panel.classList.toggle("hidden", !active);
-  });
-}
-
-document.querySelectorAll("[data-tab]").forEach((button) => {
-  button.addEventListener("click", () => activateTab(button));
-  button.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-    event.preventDefault();
-    const tabs = [...document.querySelectorAll("[data-tab]")];
-    const currentIndex = tabs.indexOf(button);
-    const nextIndex = event.key === "Home" ? 0
-      : event.key === "End" ? tabs.length - 1
-      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-    activateTab(tabs[nextIndex]);
-    tabs[nextIndex].focus();
-  });
-});
-
-$("#filters").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-filter]");
-  if (!button) return;
-  selectedFamily = button.dataset.filter;
-  renderFilters();
-  renderMedications();
-});
-
-$("#list").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-id]");
-  if (button) showMedication(button.dataset.id);
-});
-
-$("#search").addEventListener("input", () => {
-  if ($("#meds").hidden) activateTab($("#tab-meds"));
-  renderMedications();
-});
-
-document.addEventListener("keydown", (event) => {
-  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
-    event.preventDefault();
-    $("#search").focus();
+  if(selectedBrand&&!isGlafornilXR){const sb=brands.find(x=>x.registro===selectedBrand);if(sb)body+=`<div class="formulation-warning"><b>Antes de aplicar consejos de administración</b><p>La formulación de <strong>${esc(sb.nombre)}</strong> no está confirmada con el folleto autorizado. No asumir horarios, posibilidad de partir o triturar comprimidos, ni equivalencia entre formulaciones por el nombre comercial. Verificar envase, receta y documentación del producto.</p></div>`;}
+  if(m.dispensacion_rapida){
+   const r={...m.dispensacion_rapida[mode]};
+   if(isGlafornilXR){
+     r.consejo='Glafornil XR es metformina de liberación prolongada. Confirmar en la receta la dosis y el horario; no extrapolar la pauta de otras formulaciones. El folleto profesional indica una administración usual una vez al día con la cena, pero debe respetarse la indicación individual.';
+     r.efectos=mode==='primera'?'Al iniciar el tratamiento pueden presentarse náuseas, vómitos, diarrea, dolor abdominal y pérdida del apetito. Si son intensos, persistentes o provocan deshidratación, solicitar evaluación profesional.':'Preguntar por náuseas, vómitos, diarrea, dolor abdominal o falta de apetito. Si persisten o afectan la hidratación, consultar al químico farmacéutico y al médico tratante según gravedad.';
+     r.almacenamiento='El folleto profesional aportado solo indica mantener fuera del alcance de los niños. No establece una temperatura de conservación: revisar envase y folleto de la presentación dispensada.';
+   }
+   body+=`<div class="mode-toggle" aria-label="Situación de dispensación"><button type="button" class="${mode==='primera'?'chosen':''}" data-mode="primera">Primera dispensación</button><button type="button" class="${mode==='habitual'?'chosen':''}" data-mode="habitual">Uso habitual</button></div>`;
+   body+=`<div class="fast-summary"><span class="chip">Consejo esencial</span><p class="fast-quote">${esc(r.consejo)}</p></div>`;
+   body+=block('Una pregunta útil',`<p>${esc(r.pregunta)}</p>`);
+   if(r.efectos)body+=block('Efectos adversos que conviene mencionar',`<p>${esc(r.efectos)}</p>`);
+   if(isGlafornilXR)body+=block('Precauciones con otros medicamentos',`<p><strong>AINEs (ibuprofeno, naproxeno y similares):</strong> antes de automedicarse, consultar al químico farmacéutico o al médico tratante, especialmente si hay deshidratación, vómitos, diarrea o antecedentes de problemas renales. Algunos AINEs pueden deteriorar la función renal y favorecer la acumulación de metformina en personas susceptibles.</p><p><strong>Pregunta complementaria:</strong> ¿Ha utilizado antiinflamatorios o comenzado otro medicamento recientemente?</p><p class="muted mini">Precaución contextual, no contraindicación absoluta. Fundamento: folleto Glafornil XR, pág. 4.</p>`);
+   if(r.almacenamiento)body+=block('Almacenamiento',`<p>${esc(r.almacenamiento)}</p>`);
+   body+=block('Acción orientativa',`<p>${esc(r.accion)}</p>`);
+   body+=block('Consejos complementarios',`<div class="quick-grid">${m.consejos_practicos.map(c=>`<div class="quick-card"><span class="chip">${esc(c.tipo)}</span><h4>${esc(c.titulo)}</h4><p>${esc(c.texto)}</p></div>`).join('')}</div>`);
+   if(isGlafornilXR)body+=block('Respaldo documental · Glafornil XR',`<p>Folleto de información al profesional, REF MT1903412/22, fechado 09-12-2022. Administración: pág. 1; precauciones: pág. 4; efectos adversos: pág. 6; conservación: pág. 8.</p><p class="muted mini">Atención: el registro F-21095/19 impreso en el folleto XR 1000 difiere del F-21095/24 del catálogo exportado. La correspondencia y vigencia no están verificadas. No extrapolar este folleto a Glafornil convencional.</p>`);
+   else if(m.id==='metformina')body+=block('Respaldo documental · estado preliminar',`<p>Consejos generales en revisión documental; folletos específicos de esta presentación y revisión profesional pendientes. <a href="https://www.nhs.uk/medicines/metformin/" target="_blank" rel="noopener noreferrer">Referencia general NHS ↗</a></p>`);
+  }else{
+   body+=`<div class="placeholder"><b>Dispensación rápida en preparación</b><p>La orientación breve específica de este medicamento aún no ha sido revisada. Consulta la información preliminar en la otra pestaña.</p></div>`;
   }
-});
-
-$("#close").addEventListener("click", () => $("#detail").close());
-
-async function loadMedications() {
-  try {
-    const response = await fetch("./medicamentos.json");
-    if (!response.ok) throw new Error(`Error HTTP ${response.status}`);
-    const data = await response.json();
-    if (!Array.isArray(data)) throw new Error("El catálogo no tiene el formato esperado.");
-    medications = data;
-    renderFilters();
-    renderMedications();
-  } catch (error) {
-    console.error("No se pudo cargar medicamentos.json:", error);
-    $("#count").textContent = "Catálogo no disponible";
-    $("#filters").replaceChildren();
-    $("#list").innerHTML = '<p class="load-error">No fue posible cargar el catálogo. Comprueba la conexión o abre la aplicación desde un servidor web.</p>';
-  }
+  body+=block('Marcas comerciales en Chile',m.marcas&&m.marcas.length?`<ul>${m.marcas.map(b=>`<li>${esc(b.nombre)} · ${esc(b.presentacion||'Presentación por verificar')}</li>`).join('')}</ul>`:'<p class="muted">Aún no se han incorporado marcas. Se añadirán después de comprobar registro sanitario, formulación y presentación en fuentes oficiales chilenas.</p>');
+ }else if(expanded){
+  body+=block('Mecanismo de acción',`<p>${esc(m.mecanismo)}</p>`);
+  body+=block('Posicionamiento terapéutico',`<p>${esc(m.posicionamiento)}</p>`);
+  body+=block('Reacciones adversas',list(m.reacciones));
+  body+=block('Función renal y precauciones',`<p>${esc(m.renal)}</p>`);
+  body+=block('Interacciones y situaciones de riesgo',list(m.interacciones));
+  body+=block('Alertas para dispensación',`<div class="alerts">${(m.alertas||[]).map(a=>`<div class="alert-item"><span class="chip">${esc(a.nivel)}</span><b>${esc(a.titulo)}</b><p>${esc(a.detalle)}</p></div>`).join('')}</div>`);
+  body+=block('Orientación para la dispensación',`<p>${esc(m.dispensacion)}</p>`);
+  body+=block('Fuentes y trazabilidad',`<ul>${(m.fuentes||[]).map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.nombre)} ↗</a></li>`).join('')}</ul><p class="muted mini">Fecha del borrador: ${esc(m.revision)}. ${esc(m.validacion)}</p>`);
+ }else{
+  body+=block('Descripción general',`<p>${esc(m.descripcion)}</p>`);
+  body+=block('Precauciones preliminares',list(m.seguridad));
+  body+=block('Orientación preliminar',`<p>${esc(m.dispensacion)}</p>`);
+  body+='<p class="muted mini">Fuentes y fecha de revisión: pendientes de incorporar.</p>';
+ }
+ body+='<div class="notice" style="margin:16px 0"><strong>Prototipo académico.</strong> Contenido no validado para uso asistencial. No sustituye la evaluación del químico farmacéutico ni las fichas regulatorias vigentes.</div></article>';
+ $('#view').innerHTML=body;
+ $('#back').onclick=()=>setView('catalogo');
+ document.querySelectorAll('[data-detailtab]').forEach(btn=>btn.onclick=()=>detail(id,btn.dataset.detailtab,mode,selectedBrand));
+ document.querySelectorAll('[data-mode]').forEach(btn=>btn.onclick=()=>detail(id,tab,btn.dataset.mode,selectedBrand));
 }
-
-if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch((error) => {
-      console.error("No se pudo registrar el service worker:", error);
-    });
-  });
-}
-
-loadMedications();
+$('#search').addEventListener('input',e=>{query=e.target.value.trim().toLocaleLowerCase('es');if(view!=='catalogo'&&view!=='inicio')setView('catalogo');else render()});document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));fetch('./marcas_isp.json').then(r=>r.json()).then(d=>{brands=d;render()}).catch(()=>{});fetch('./medicamentos.json').then(r=>{if(!r.ok)throw Error('No se pudo leer medicamentos.json');return r.json()}).then(d=>{meds=d;render()}).catch(e=>{$('#view').innerHTML=`<div class="notice"><strong>Error al cargar datos.</strong> Ejecuta la carpeta mediante Live Server y verifica medicamentos.json. ${esc(e.message)}</div>`});if('serviceWorker'in navigator&&location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
