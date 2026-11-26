@@ -68,3 +68,14 @@
 .attention-focus{outline:2px solid #2f847a;outline-offset:3px;transition:outline-color .3s}
 @media(min-width:680px){.attention-shortcuts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:370px){.attention-shortcuts button{min-height:76px;padding:8px 4px}}
+
+.commercial-lookup{margin:24px 0;padding:18px;border:1px solid #cbdedc;border-radius:14px}.commercial-lookup h3{margin-top:0}
+
+.evidence-item{padding:12px 0;border-bottom:1px solid var(--border,#d8dfe5)}.evidence-item h4{margin:0 0 8px}.evidence-item p{margin:6px 0;line-height:1.5}
+
+/* v33: prototipo de capa clínica opcional */
+.clinical-extra{margin:18px 0;border:1px solid var(--border,#d7dfe5);border-radius:14px;overflow:hidden}
+.clinical-extra summary{cursor:pointer;padding:15px 17px;background:var(--surface,#f4f7f9);font-weight:700;list-style-position:inside}
+.clinical-extra summary small{display:block;font-weight:400;margin:5px 0 0 22px;opacity:.8;line-height:1.5}
+.clinical-extra-content{padding:14px 18px}
+.clinical-extra-content h4{margin:14px 0 5px}
