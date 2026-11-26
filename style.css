@@ -50,3 +50,21 @@
 .learning-intro{padding:12px 0 5px}
 .learning-intro h3{margin:10px 0 5px}
 .learning-second{border-top:3px solid #126d70;margin-top:24px;padding-top:24px}
+
+.learning-comparison{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:14px 0}
+.learning-comparison>div{border:1px solid #c9e0dc;background:#f5faf9;border-radius:12px;padding:14px}
+.learning-comparison p{margin:8px 0 0}
+
+.patient-script{display:grid;gap:9px}
+.patient-script p{background:#f5faf9;border-left:3px solid #2f847a;border-radius:7px;padding:12px;margin:0}
+
+/* v1.8: navegación compacta y accesible dentro de la ficha de metformina */
+.attention-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:16px 0 10px}
+.attention-shortcuts button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:82px;padding:12px 8px;border:1px solid #c7dcd9;border-radius:13px;background:#f4faf9;color:#194e49;cursor:pointer;font:inherit;text-align:center}
+.attention-shortcuts button span{font-size:22px}
+.attention-shortcuts button b{font-size:13px}
+.attention-shortcuts button:hover,.attention-shortcuts button:focus-visible{border-color:#2f847a;background:#e5f4f0;outline-offset:2px}
+.clinical-block[id^="met-"]{scroll-margin-top:24px}
+.attention-focus{outline:2px solid #2f847a;outline-offset:3px;transition:outline-color .3s}
+@media(min-width:680px){.attention-shortcuts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:370px){.attention-shortcuts button{min-height:76px;padding:8px 4px}}
