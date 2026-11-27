@@ -1,3 +1,15 @@
+FarmaDM2 6.72.1 — CANDIDATA, 27-11-2026.
+Base: copia sin sobrescribir del ZIP FarmaDM2 6.72 candidato con nota ISP NOIANA.
+AJUSTES DE PRESENTACIÓN (no cambian los datos clínicos):
+• Actualización → Chile: documentos automáticamente ordenados por fecha descendente DD-MM-AAAA.
+• Dispensación rápida: retirado el bloque final «Identificación comercial (pendiente)» de todas las fichas.
+• Se conservan campos de marcas en medicamentos.json, marcas_isp.json, la búsqueda comercial complementaria,
+  las fuentes y alertas por medicamento, incluidas las cinco incorporadas por la nota NOIANA.
+• Caché SW cambiado para distribuir los archivos JS actualizados y etiqueta de interfaz 6.72.1.
+No publicada en GitHub. La revisión clínica profesional integral continúa pendiente.
+Detalle: documentacion/Ajustes_6.72.1_orden_fichas.md.
+
+--- HISTORIAL ANTERIOR CONSERVADO ---
 FarmaDM2 6.72 — CANDIDATA DE REVISIÓN DOCUMENTAL, 26-11-2026.
 Base: copia intacta de FarmaDM2 6.71 (09-11-2026).
 Motivo: nota informativa ISP del 17-11-2026 sobre NOIANA y medicamentos basados en GLP-1.

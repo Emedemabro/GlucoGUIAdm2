@@ -95,7 +95,6 @@ function detail(id, tab='rapida', mode='primera', selectedBrand='', relatedName=
   }else{
    body+=`<div class="placeholder"><b>Dispensación rápida en preparación</b><p>La orientación breve específica de este medicamento aún no ha sido revisada. Consulta la información preliminar en la otra pestaña.</p></div>`;
   }
-  body+=block('Identificación comercial (pendiente)',m.marcas&&m.marcas.length?`<ul>${m.marcas.map(b=>`<li>${esc(b.nombre)} · ${esc(b.presentacion||'Presentación por verificar')}</li>`).join('')}</ul>`:'<p class="muted">Aún no se han incorporado marcas. La identificación comercial no forma parte de la consulta principal y permanece pendiente de revisión.</p>');
  }else if(expanded){
   body+=block('Posicionamiento terapéutico',`<p>${esc(m.posicionamiento)}</p>`);
   body+=block('Mecanismo de acción',`<p>${esc(m.mecanismo)}</p>`);
