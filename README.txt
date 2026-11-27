@@ -1,3 +1,14 @@
+FarmaDM2 6.72.2 — CANDIDATA 27-11-2026.
+Base: copia 6.72.1 del autor. Se corrigieron los campos visibles de cuatro estudios
+ya existentes en la ficha de tirzepatida y se completaron consejos complementarios
+en tres fichas: tirzepatida, insulina humana NPH e insulina humana regular.
+No se reemplazaron alertas, pautas ni otras fichas. Se añadió referencia educativa
+NLM MedlinePlus a las dos fichas de insulinas humanas. Se actualizó la versión
+visual y clave de caché (requerirá prueba de actualización offline real).
+Este ZIP es candidato local: sin publicación GitHub y sin validación clínica externa.
+Registro: documentacion/Ajustes_6.72.2_estudios_consejos.md.
+
+--- HISTORIAL PREVIO ---
 FarmaDM2 6.72.1 — CANDIDATA, 27-11-2026.
 Base: copia sin sobrescribir del ZIP FarmaDM2 6.72 candidato con nota ISP NOIANA.
 AJUSTES DE PRESENTACIÓN (no cambian los datos clínicos):

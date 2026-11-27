@@ -545,9 +545,13 @@
       {
         "nombre": "Ministerio de Salud de Chile. Protocolo de insulinización para personas con diabetes mellitus tipo 2 (2021; protocolo orientativo, no certifica disponibilidad de productos). Secciones 3.10.2 y 3.10.3.",
         "url": "https://redcronicas.minsal.cl/wp-content/uploads/2021/04/PROTOCOLO-INSULINIZACION-final.pdf"
+      },
+      {
+        "nombre": "MedlinePlus / Biblioteca Nacional de Medicina de EE. UU. · Human Insulin Injection · orientación general para educación sobre insulina humana (no reemplaza folleto ISP por presentación).",
+        "url": "https://medlineplus.gov/druginfo/meds/a682611.html"
       }
     ],
-    "revision": "Revisión editorial y documental v47.4: perfil de acción respaldado por Tsai et al. (2024), educación de hipoglicemia cotejada con protocolo MINSAL y precauciones específicas por producto pendientes de prospecto. Revisión profesional final recomendada antes de publicación clínica.",
+    "revision": "Revisión editorial y documental v47.4: perfil de acción respaldado por Tsai et al. (2024), educación de hipoglicemia cotejada con protocolo MINSAL y precauciones específicas por producto pendientes de prospecto. Revisión profesional final recomendada antes de publicación clínica. | 27-11-2026: corrección de visualización de estudios y/o consejos complementarios de la versión candidata 6.72.2; revisión clínica profesional pendiente.",
     "validacion": "Rangos teóricos de Tsai et al. (2024). Revisar siempre la prescripción y el prospecto del producto dispensado; no utilizar esta ficha para ajustes autónomos de dosis.",
     "dispensacion_rapida": {
       "primera": {
@@ -581,7 +585,29 @@
         "nota": "Valores teóricos orientativos de efecto tras administración subcutánea; pueden variar según dosis, formulación y características individuales. No equivalen a la semivida plasmática. Verificar las instrucciones particulares del producto dispensado.",
         "fuente": "Tsai Y-Y, Gu Y-S, Jiang Y-D. An update of contemporary insulin therapy. Journal of Diabetes Investigation. 2024;15(8):1000–1002. doi:10.1111/jdi.14212. Tabla 1."
       }
-    }
+    },
+    "consejos_practicos": [
+      {
+        "tipo": "Identificación",
+        "titulo": "Confirmar el producto y dispositivo",
+        "texto": "Comparar nombre, concentración, presentación y dispositivo con la receta antes de entregar. No intercambiar NPH con insulina regular, mezclas o análogos por iniciativa propia."
+      },
+      {
+        "tipo": "Técnica",
+        "titulo": "Resuspensión de NPH",
+        "texto": "La NPH es una suspensión y debe quedar uniformemente turbia tras la resuspensión indicada por el fabricante. No utilizar si se observan grumos, partículas anómalas o aspecto no esperado; solicitar revisión."
+      },
+      {
+        "tipo": "Seguimiento",
+        "titulo": "Hipoglicemia y puntos de inyección",
+        "texto": "Preguntar por episodios de hipoglicemia, especialmente nocturnos, y por zonas de inyección endurecidas. Reforzar rotación de puntos y el plan de manejo de hipoglicemia entregado por el equipo de salud."
+      },
+      {
+        "tipo": "Conservación",
+        "titulo": "Verificar condiciones por producto",
+        "texto": "Comprobar conservación y fecha del primer uso. Los plazos y temperaturas permitidos después de abrir dependen de la presentación; confirmar en el folleto correspondiente y no congelar."
+      }
+    ]
   },
   {
     "id": "tirzepatida",
@@ -664,22 +690,34 @@
       {
         "estudio": "SURPASS-2 (2021)",
         "resultado": "Frente a semaglutida 1 mg semanal, mayor descenso de HbA1c y peso con tirzepatida en pacientes con DM2 bajo metformina; comparación específica, no extrapolable a semaglutida 2,4 mg.",
-        "url": "https://doi.org/10.1056/NEJMoa2107519"
+        "url": "https://doi.org/10.1056/NEJMoa2107519",
+        "poblacion": "1.879 adultos con DM2 insuficientemente controlada con metformina; ensayo de 40 semanas con tirzepatida semanal frente a semaglutida subcutánea 1 mg semanal.",
+        "hallazgo": "En las dosis estudiadas, tirzepatida logró mayores reducciones de HbA1c y peso que semaglutida 1 mg semanal.",
+        "interpretacion": "Comparación directa con semaglutida 1 mg para DM2; no extrapolar los resultados a semaglutida 2,4 mg ni a otras indicaciones o poblaciones."
       },
       {
         "estudio": "SURPASS-CVOT (2025)",
         "resultado": "MACE 12,2 % tirzepatida vs 13,1 % dulaglutida; HR 0,92 (IC 95,3 % 0,83–1,01). No inferioridad, sin superioridad demostrada.",
-        "url": "https://doi.org/10.1056/NEJMoa2505928"
+        "url": "https://doi.org/10.1056/NEJMoa2505928",
+        "poblacion": "Adultos con DM2 y enfermedad cardiovascular aterosclerótica; comparación aleatorizada de tirzepatida semanal frente a dulaglutida 1,5 mg semanal.",
+        "hallazgo": "Eventos cardiovasculares mayores: 12,2 % con tirzepatida y 13,1 % con dulaglutida; HR 0,92 (IC del 95,3 %: 0,83–1,01).",
+        "interpretacion": "Se demostró no inferioridad cardiovascular frente a dulaglutida, pero no superioridad estadísticamente significativa para el desenlace primario."
       },
       {
         "estudio": "SUMMIT (2025)",
         "resultado": "En obesidad e IC con FE preservada, menor muerte CV o empeoramiento de IC: 9,9 % vs 15,3 %; HR 0,62 (IC 95 % 0,41–0,95). Incluyó participantes con y sin DM2.",
-        "url": "https://doi.org/10.1056/NEJMoa2410027"
+        "url": "https://doi.org/10.1056/NEJMoa2410027",
+        "poblacion": "Personas con obesidad e insuficiencia cardíaca con fracción de eyección preservada; participaron personas con y sin DM2.",
+        "hallazgo": "Muerte cardiovascular o empeoramiento de insuficiencia cardíaca: 9,9 % con tirzepatida frente a 15,3 % con placebo; HR 0,62 (IC95 %: 0,41–0,95).",
+        "interpretacion": "El resultado corresponde a una población definida por obesidad e insuficiencia cardíaca, no a una muestra integrada exclusivamente por personas con DM2 ni a una indicación regulatoria chilena automática."
       },
       {
         "estudio": "SURPASS-4, análisis renal (2022)",
         "resultado": "Señales renales exploratorias frente a glargina; no constituye ensayo renal definitivo.",
-        "url": "https://pubmed.ncbi.nlm.nih.gov/36152639/"
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36152639/",
+        "poblacion": "Personas con DM2 y riesgo cardiovascular elevado participantes del ensayo SURPASS-4; análisis renal exploratorio de tirzepatida frente a insulina glargina.",
+        "hallazgo": "El análisis comunicó resultados renales favorables de carácter exploratorio en los desenlaces evaluados.",
+        "interpretacion": "Análisis posterior del ensayo, no diseñado como estudio renal confirmatorio. No atribuir un beneficio renal universal ni una nueva indicación regulatoria por este resultado."
       }
     ],
     "fuentes": [
@@ -710,7 +748,7 @@
         "url": "https://doc.digital.gob.cl/validador/OXHVLS-133"
       }
     ],
-    "revision": "2026-10-27 · revisión editorial de tirzepatida basada en documentación aportada | 26-11-2026: incorporación documental de alerta ISP sobre NOIANA; pendiente de validación clínica profesional.",
+    "revision": "2026-10-27 · revisión editorial de tirzepatida basada en documentación aportada | 26-11-2026: incorporación documental de alerta ISP sobre NOIANA; pendiente de validación clínica profesional. | 27-11-2026: corrección de visualización de estudios y/o consejos complementarios de la versión candidata 6.72.2; revisión clínica profesional pendiente.",
     "validacion": "Revisión documental y editorial; pendiente auditoría farmacoterapéutica final y prueba de interfaz. No constituye validación clínica.",
     "guia_meson": {
       "preguntas": "¿Sabe utilizar su dispositivo y qué día le corresponde la inyección? ¿Usa insulina o sulfonilureas? ¿Ha presentado dolor abdominal fuerte, vómitos persistentes, pérdida de peso muy rápida o dificultades para alimentarse? ¿Usa anticonceptivos orales?",
@@ -725,7 +763,28 @@
       "evidencia_y_limitaciones": "Los ensayos SURPASS documentan reducciones importantes de HbA1c y peso; SURPASS-2 comparó tirzepatida con semaglutida 1 mg semanal, no con todas sus dosis o indicaciones. NICE TA924 analiza una población y criterios de financiación del NHS que no constituyen criterios regulatorios chilenos. La nota ISP de septiembre de 2026 advierte sobre malnutrición, incluidas deficiencias nutricionales y pérdida ponderal acelerada.\nSeguridad y seguimiento: efectos gastrointestinales, deshidratación, estado nutricional y síntomas de alarma; riesgo de hipoglucemia con insulina o sulfonilureas. Consideraciones para la dispensación: diferenciar presentación vial y KwikPen; verificar la precaución sobre anticonceptivos orales tras inicio o aumento de dosis conforme a ficha técnica aplicable.",
       "detalle_regulatorio": "Folletos ISP: vial F-28426/24 y KwikPen F-29345/25 (presentaciones específicas). Según los folletos ISP citados para las presentaciones revisadas, ante sospecha de pancreatitis corresponde interrumpir tirzepatida y realizar evaluación médica; si se confirma, no reiniciar. La conducta terapéutica debe definirse en atención clínica y cotejarse con el folleto de la presentación específica. Vigilar síntomas de deshidratación, colecistopatía y tolerancia gastrointestinal. ISP, nota de farmacovigilancia 01-09-2026: evaluar estado nutricional antes y durante el tratamiento y considerar suspensión por profesional ante malnutrición grave o persistente. Nota técnica de revisión 07-11-2026: Folleto ISP Mounjaro vial F-28425/24: no requiere ajuste de dosis por deterioro renal, incluida enfermedad renal terminal, basado en farmacocinética; la experiencia con deterioro grave/terminal es limitada y se requiere precaución. Los efectos gastrointestinales pueden producir deshidratación y deterioro renal. La recomendación debe verificarse por producto y dispositivo. Fuente: https://www.ispch.gob.cl/wp-content/uploads/2026/03/MOUNJARO-SOLUCION-INYECTABLE-10-mg-05-mL-F-28425-24.pdf"
     },
-    "consejos_practicos": []
+    "consejos_practicos": [
+      {
+        "tipo": "Dispositivo",
+        "titulo": "Verificar la presentación antes de enseñar",
+        "texto": "Confirmar si el producto dispensado corresponde a vial monodosis o pluma KwikPen multidosis. Su técnica, instrucciones de uso y conservación no deben intercambiarse; revisar el folleto específico y solicitar apoyo profesional cuando existan dudas."
+      },
+      {
+        "tipo": "Seguimiento",
+        "titulo": "Alimentación, hidratación y tolerancia",
+        "texto": "Preguntar por náuseas o vómitos persistentes, ingesta alimentaria insuficiente y pérdida de peso excesiva. Si no puede alimentarse o beber líquidos, o aparecen signos de deshidratación o malnutrición, orientar consulta médica."
+      },
+      {
+        "tipo": "Interacciones",
+        "titulo": "Anticonceptivos orales y otros antidiabéticos",
+        "texto": "Consultar al químico farmacéutico cuando la persona utilice anticonceptivos hormonales orales, insulina o sulfonilureas. Los folletos revisados recomiendan una medida anticonceptiva adicional o no oral durante las cuatro semanas posteriores al inicio y a cada aumento de dosis; verificar la presentación."
+      },
+      {
+        "tipo": "Seguridad",
+        "titulo": "Reconocer síntomas que requieren atención",
+        "texto": "Dolor abdominal intenso y persistente o alteraciones visuales súbitas requieren evaluación médica inmediata. No suspender ni modificar el tratamiento por iniciativa propia; informar los síntomas al equipo tratante."
+      }
+    ]
   },
   {
     "id": "sitagliptina",
@@ -2622,9 +2681,13 @@
       {
         "nombre": "Ministerio de Salud de Chile. Protocolo de insulinización para personas con diabetes mellitus tipo 2 (2021; protocolo orientativo, no certifica disponibilidad de productos). Secciones 3.10.2 y 3.10.3.",
         "url": "https://redcronicas.minsal.cl/wp-content/uploads/2021/04/PROTOCOLO-INSULINIZACION-final.pdf"
+      },
+      {
+        "nombre": "MedlinePlus / Biblioteca Nacional de Medicina de EE. UU. · Human Insulin Injection · orientación general para educación sobre insulina humana (no reemplaza folleto ISP por presentación).",
+        "url": "https://medlineplus.gov/druginfo/meds/a682611.html"
       }
     ],
-    "revision": "Revisión editorial y documental v47.4: perfil de acción respaldado por Tsai et al. (2024), educación de hipoglicemia cotejada con protocolo MINSAL y precauciones específicas por producto pendientes de prospecto. Revisión profesional final recomendada antes de publicación clínica.",
+    "revision": "Revisión editorial y documental v47.4: perfil de acción respaldado por Tsai et al. (2024), educación de hipoglicemia cotejada con protocolo MINSAL y precauciones específicas por producto pendientes de prospecto. Revisión profesional final recomendada antes de publicación clínica. | 27-11-2026: corrección de visualización de estudios y/o consejos complementarios de la versión candidata 6.72.2; revisión clínica profesional pendiente.",
     "validacion": "Rangos teóricos de Tsai et al. (2024). Revisar siempre la prescripción y el prospecto del producto dispensado; no utilizar esta ficha para ajustes autónomos de dosis.",
     "dispensacion_rapida": {
       "primera": {
@@ -2658,7 +2721,29 @@
         "nota": "Valores teóricos orientativos de efecto tras administración subcutánea; pueden variar según dosis, formulación y características individuales. No equivalen a la semivida plasmática. Verificar las instrucciones particulares del producto dispensado.",
         "fuente": "Tsai Y-Y, Gu Y-S, Jiang Y-D. An update of contemporary insulin therapy. Journal of Diabetes Investigation. 2024;15(8):1000–1002. doi:10.1111/jdi.14212. Tabla 1."
       }
-    }
+    },
+    "consejos_practicos": [
+      {
+        "tipo": "Identificación",
+        "titulo": "Distinguir insulina regular de otras formulaciones",
+        "texto": "Verificar principio activo, concentración, presentación y dispositivo. No confundir insulina regular humana con NPH ni con análogos prandiales; no sustituir por cuenta propia."
+      },
+      {
+        "tipo": "Administración",
+        "titulo": "Coordinar con las comidas",
+        "texto": "Comprobar que la persona conoce el horario indicado respecto de las comidas y qué hacer si una comida se retrasa. Respetar la prescripción y las instrucciones del producto; no modificar dosis ni horarios desde la dispensación."
+      },
+      {
+        "tipo": "Técnica",
+        "titulo": "Inspección y rotación de sitios",
+        "texto": "La solución de insulina regular debe presentar el aspecto transparente indicado en su folleto. No utilizar si está turbia o contiene partículas. Alternar los puntos de inyección y consultar si aparecen bultos o dificultades técnicas."
+      },
+      {
+        "tipo": "Seguridad y conservación",
+        "titulo": "Hipoglicemia y condiciones de uso",
+        "texto": "Preguntar por hipoglicemias, revisar que exista un plan de autocontrol y comprobar conservación antes y después de abrir conforme al folleto de la presentación. No compartir agujas ni dispositivos."
+      }
+    ]
   },
   {
     "id": "insulina-asparta",
